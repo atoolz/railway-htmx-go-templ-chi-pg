@@ -1,0 +1,4 @@
+*_templ.go
+/server
+tmp/
+.env

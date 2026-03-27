@@ -1,0 +1,19 @@
+package templates
+
+import "github.com/atoolz/railway-htmx-go-templ-chi-pg/internal/models"
+
+templ Home(todos []models.Todo) {
+	@Layout("HTMX + Go + Templ + Chi + Postgres") {
+		<h1 class="text-3xl font-bold mb-2">Todo App</h1>
+		<p class="text-gray-400 mb-8">HTMX + Go + Templ + Chi + PostgreSQL</p>
+		@CreateForm()
+		<div id="todo-list">
+			for _, todo := range todos {
+				@TodoItem(todo)
+			}
+		</div>
+		if len(todos) == 0 {
+			<p id="empty-state" class="text-gray-500 text-center py-8">No todos yet. Add one above.</p>
+		}
+	}
+}
